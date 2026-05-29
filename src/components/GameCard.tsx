@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { ArrowRight, Blocks, Cherry, CircleDot, Diamond, Spade, type LucideIcon } from 'lucide-react'
+import { ArrowRight, Atom, Blocks, Cherry, CircleDot, Diamond, Spade, Zap, type LucideIcon } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { Badge } from '@/components/ui/badge'
 import { audio } from '@/lib/audio'
@@ -9,6 +9,8 @@ import type { GameId, GameMeta } from '@/types/game'
 const ICONS: Record<GameId, LucideIcon> = {
   tetris: Blocks,
   slots: Cherry,
+  olympus: Zap,
+  sheldon: Atom,
   blackjack: Spade,
   roulette: CircleDot,
   videopoker: Diamond,

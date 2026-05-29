@@ -42,7 +42,9 @@ export interface Handling {
   sdf: number // soft-drop factor multiplier; SDF_INFINITE = instant
 }
 export const SDF_INFINITE = 41
-const DEFAULT_HANDLING: Handling = { das: 133, arr: 0, sdf: 20 }
+// ARR 50ms = smooth, stepped auto-repeat while a direction is held (not an instant
+// teleport to the wall). Set ARR to 0 in Settings → Handling for instant slide.
+const DEFAULT_HANDLING: Handling = { das: 133, arr: 50, sdf: 20 }
 
 export const THEMES = ['synthwave', 'aqua', 'ember', 'matrix'] as const
 export type ThemeName = (typeof THEMES)[number]
@@ -121,7 +123,15 @@ export const useSettings = create<SettingsState>()(
     }),
     {
       name: 'chipstack-settings',
-      version: 1,
+      version: 2,
+      migrate: (persisted, version) => {
+        const s = persisted as SettingsState
+        // v1 shipped ARR 0 (instant teleport to the wall); move to stepped repeat.
+        if (version < 2 && s?.handling && s.handling.arr === 0) {
+          s.handling = { ...s.handling, arr: 50 }
+        }
+        return s
+      },
       onRehydrateStorage: () => (state) => {
         if (state) {
           applyTheme(state.theme)

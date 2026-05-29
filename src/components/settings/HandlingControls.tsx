@@ -69,7 +69,7 @@ export function HandlingControls() {
         <Button
           variant="ghost"
           size="sm"
-          onClick={() => setHandling({ das: 133, arr: 0, sdf: 20 })}
+          onClick={() => setHandling({ das: 133, arr: 50, sdf: 20 })}
           className="gap-1.5 text-muted-foreground"
         >
           <RotateCcw className="size-3.5" /> Reset handling

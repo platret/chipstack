@@ -1,7 +1,14 @@
 /* Shared contracts. Every game is reached through GAMES and reads/writes the
    single Wallet via the store's imperative API (useWallet.getState()). */
 
-export type GameId = 'tetris' | 'slots' | 'blackjack' | 'roulette' | 'videopoker'
+export type GameId =
+  | 'tetris'
+  | 'slots'
+  | 'olympus'
+  | 'sheldon'
+  | 'blackjack'
+  | 'roulette'
+  | 'videopoker'
 
 export interface GameMeta {
   id: GameId
@@ -33,6 +40,24 @@ export const GAMES: readonly GameMeta[] = [
     accent: '#fbbf24',
     route: '/play/slots',
     highlight: '20 paylines · staggered stops',
+  },
+  {
+    id: 'olympus',
+    title: 'Gates of Fortune',
+    tagline: 'Tumbling pay-anywhere slot',
+    kind: 'casino',
+    accent: '#38bdf8',
+    route: '/play/olympus',
+    highlight: 'Tumble · multipliers · free spins',
+  },
+  {
+    id: 'sheldon',
+    title: 'Bazinga Reels',
+    tagline: 'Young Sheldon meme slot',
+    kind: 'casino',
+    accent: '#fb923c',
+    route: '/play/sheldon',
+    highlight: 'Memes · wilds · BAZINGA',
   },
   {
     id: 'blackjack',
