@@ -1,11 +1,11 @@
 import { lazy, Suspense } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { AppShell } from '@/components/AppShell'
-import { ComingSoon } from '@/components/GameShell'
 import { Home } from '@/routes/Home'
 import { Settings } from '@/routes/Settings'
 
 const TetrisGame = lazy(() => import('@/games/tetris/TetrisGame'))
+const Slots = lazy(() => import('@/games/slots/Slots'))
 const Blackjack = lazy(() => import('@/games/blackjack/Blackjack'))
 const Roulette = lazy(() => import('@/games/roulette/Roulette'))
 const VideoPoker = lazy(() => import('@/games/videopoker/VideoPoker'))
@@ -32,7 +32,7 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/play/tetris" element={lazyRoute(<TetrisGame />)} />
-          <Route path="/play/slots" element={<ComingSoon id="slots" />} />
+          <Route path="/play/slots" element={lazyRoute(<Slots />)} />
           <Route path="/play/blackjack" element={lazyRoute(<Blackjack />)} />
           <Route path="/play/roulette" element={lazyRoute(<Roulette />)} />
           <Route path="/play/videopoker" element={lazyRoute(<VideoPoker />)} />

@@ -26,6 +26,5 @@
     /* Paths */
     "paths": { "@/*": ["./src/*"] }
   },
-  "include": ["src"],
-  "exclude": ["src/games/slots"]
+  "include": ["src"]
 }
